@@ -1,11 +1,8 @@
 # ui-starter
 
-A two-part React starter in one folder.
+`packages/ui` is the catalog: tokens, components, and Storybook. `apps/web` is one demo page that imports `@ui-starter/ui`.
 
-- `packages/ui` holds tokens, `Button`, `TextField`, and Storybook.
-- `apps/web` is a Vite app that imports `@ui-starter/ui`.
-
-## Scripts
+## Commands
 
 ```bash
 bun install
@@ -14,6 +11,26 @@ bun run storybook   # http://localhost:6006
 bun run typecheck
 ```
 
-Change colors in `packages/ui/src/styles/theme.css`. Primitive ramps stay fixed. Semantic tokens (`canvas`, `ink`, `accent`, `danger`, and the rest) swap under the `dark` class. Add a component under `packages/ui/src/components/base`, `layout`, `navigation`, or `patterns`, export it from `packages/ui/src/index.ts`, and add a story next to it.
+## Where to go
 
-Storybook groups the catalog into Foundations, Layout, Components, Modules, and Patterns. Navigation controls sit with Components. Layout frames, overlays, and rules are skeletons. Modules are the shell, forms, detail, and table. Patterns holds navigating domains and the workflows that use those modules. Foundations covers color primitives, semantic color, type, spacing, sizing, radius, shadow, and motion. Motion durations are feedback (150ms), enter (200ms), leave (100ms), and travel (300ms). Type, color, sizing, radius, and shadow examples compare dense product UI, web pages, and graphic assets. Spacing and sizing share one scale, `spacing-01` (2px) through `spacing-13` (160px), with `spacing-05.5` (20px) between 16px and 24px. Utilities are `gap-spacing-05`, `p-spacing-05`, `w-spacing-05`, and `h-spacing-05`. Foundations/Spacing also documents usage and examples for stack, actions, fields, forms, and pages. Patterns stays the group for composed components. The toolbar switches light and dark, and the viewport can be Mobile (375px) or Desktop (1440px).
+| Job | Open first | Put the work |
+| --- | --- | --- |
+| Mock up a screen | `Patterns/Overview`, then the closest pattern story | A story beside that pattern |
+| Pick a workflow | `Patterns/Overview`, "How to choose a workflow" | Copy that pattern. Keep `Shell` as the frame |
+| Add a control that does not exist | The matching story under Components, Layout, or Modules | `packages/ui/src/components`, export it from `packages/ui/src/index.ts`, add a story next to the file |
+| Change color, type, or space | Foundations stories | Semantic tokens in `packages/ui/src/styles/theme.css`. Leave the primitive ramps fixed |
+| Show the mock in the running app | `apps/web/src/App.tsx` | That file. This app has no router |
+
+`Patterns/Overview` chooses the workflow: navigating domains, create a record, modifying a record, wizard, onboarding, task management, or the visualization page.
+
+## How to add
+
+**A screen.** Copy the closest story under `packages/ui/src/components/patterns`. Compose `Shell` and the modules that story already uses.
+
+**A control.** Add it under `packages/ui/src/components` in `base`, `layout`, `navigation`, or `modules`. Export it from `packages/ui/src/index.ts`. Add a story beside the file.
+
+**Color, type, or space.** Edit semantic tokens in `packages/ui/src/styles/theme.css`. Primitive ramps stay fixed. Foundations stories are the token reference.
+
+## Catalog
+
+Storybook groups the catalog into Foundations, Layout, Components, Modules, and Patterns. Navigation controls sit with Components. Foundations covers color, type, spacing, sizing, radius, shadow, and motion. Layout holds frames, overlays, rules, and arrangement. Modules are the shell, forms, detail, and table. Patterns are the workflows that use those modules. The toolbar switches light and dark. The viewport can be Mobile (375px) or Desktop (1440px).
