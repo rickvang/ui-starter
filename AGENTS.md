@@ -11,12 +11,28 @@
 | Build a table | `Modules/Table` Overview | The smallest table story that matches the task |
 | Add a control that does not exist | The matching story under Components, Layout, or Modules | `packages/ui/src/components`, export from `packages/ui/src/index.ts`, and add a story beside the file. A module that already has a `stories/` folder gets the story there |
 | Change color, type, or space | Foundations stories | Semantic tokens in `packages/ui/src/styles/theme.css`. Primitive ramps stay fixed |
-| Show the mock in the running app | `apps/web/src/App.tsx` | That file. This app has no router |
+| Show the mock in the running app | `apps/web/src/App.tsx` | That file. It stays the home page. This app has no router |
+| Hold a workspace, client, or project | `apps/web/src/areas.ts` | Add one entry to `areas`. Add its page only when asked |
+| Show one of those areas | `apps/web/src/area-pages.tsx` | Register a page there when one is requested. The URL is `/<kind>/<id>` |
 
 Workflows in `Patterns/Overview`: navigating domains, create a record, modifying a record, wizard, onboarding, task management, visualization page.
 
+## Use the space
+
+The catalog is where a screen is tried. The app holds workspaces, clients, and projects. Try the screen in the catalog first.
+
+- Mock the screen as a story. Put it in the app only when asked.
+- One entry holds one area. A workspace is where people iterate, collaborate, or design. A client is one client's area. A project is one project's area.
+- Set `id` to one path segment, such as `north`. Set `label` to the name on screen. The URL is `/<kind>/<id>`.
+- The app can hold many entries. The screen shows one area at a time.
+- When a page is requested, copy the closest pattern. Keep `Shell` as the frame: navigation, settings, help, and the account stay. That area's content is the page inside the frame.
+- Register the page in `areaPages` under `areaPageKey(area)`. The component takes `{ area }`. An entry with no page still shows the home demo in `App.tsx`.
+- A second area is a new entry and its own page.
+- Product copy stays in `apps/web`. Reusable controls stay in `packages/ui`. Do not add a router.
+
 ## How to change
 
+- Follow Use the space before adding an area or a page.
 - Import reusable components from `@ui-starter/ui`. The public list is `packages/ui/src/index.ts`.
 - A pattern story shows a composition. Check that list before importing the pattern as a component.
 - Run `bun run typecheck`.
