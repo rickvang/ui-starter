@@ -20,13 +20,15 @@ bun run typecheck
 | Build a table | `Modules/Table` Overview | The smallest table story that matches the task |
 | Add a control that does not exist | The matching story under Components, Layout, or Modules | `packages/ui/src/components`, export it from `packages/ui/src/index.ts`, and add a story next to the file. A module that already has a `stories/` folder gets the story there |
 | Change color, type, or space | Foundations stories | Semantic tokens in `packages/ui/src/styles/theme.css`. Leave the primitive ramps fixed |
-| Show the mock in the running app | `apps/web/src/App.tsx` | That file. This app has no router |
+| Show the mock in the running app | `apps/web/src/App.tsx` | That file. It stays the home page. This app has no router |
+| Hold a workspace, client, or project | `apps/web/src/areas.ts` | Add one entry to `areas`. Leave the page unbuilt |
+| Show one of those areas | `apps/web/src/area-pages.tsx` | Register a page there when one is requested. The URL is `/<kind>/<id>` |
 
 `Patterns/Overview` chooses the workflow: navigating domains, create a record, modifying a record, wizard, onboarding, task management, or the visualization page.
 
 ## How to change
 
-Import reusable components from `@ui-starter/ui`. The public list is `packages/ui/src/index.ts`. A pattern story shows a composition, so check that list before importing the pattern as a component. Run `bun run typecheck`, then review the screen or story at desktop (1440px) and mobile (375px).
+A workspace, client, or project is an entry in `apps/web/src/areas.ts`. The list is empty. `area-pages.tsx` stays empty until a page is requested. Import reusable components from `@ui-starter/ui`. The public list is `packages/ui/src/index.ts`. A pattern story shows a composition, so check that list before importing the pattern as a component. Run `bun run typecheck`, then review the screen or story at desktop (1440px) and mobile (375px).
 
 ## Catalog
 
