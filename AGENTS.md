@@ -15,7 +15,7 @@
 | Hold a workspace, client, or project | `apps/web/src/areas.ts` | Add one entry to `areas`. Add its page only when asked |
 | Show one of those areas | `apps/web/src/area-pages.tsx` | Register a page there when one is requested. The URL is `/<kind>/<id>` |
 
-Workflows in `Patterns/Overview`: navigating domains, switching organizations, create a record, modifying a record, wizard, onboarding, task management, visualization page.
+Workflows in `Patterns/Overview`: navigating domains, switching organizations, product settings, account information, create a record, modifying a record, wizard, onboarding, task management, visualization page.
 
 ## Use the space
 
