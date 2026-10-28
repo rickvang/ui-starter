@@ -1,7 +1,7 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { DocCodeSection } from "../templates/doc";
 import { dialogSnippet, libraryExportNote } from "../../../.storybook/story-snippets";
+import { DocCodeSection } from "../templates/doc";
 import { Button } from "../base/button";
 import { Dialog } from "./dialog";
 
@@ -27,19 +27,18 @@ export const DialogStory: Story = {
                     Remove
                 </Button>
                 <p className="text-sm text-ink">{result}</p>
-                {open ? (
-                    <Dialog
-                        title="Remove North"
-                        confirmLabel="Remove"
-                        onCancel={() => setOpen(false)}
-                        onConfirm={() => {
-                            setResult("North was removed.");
-                            setOpen(false);
-                        }}
-                    >
-                        Removing the product deletes its projects. This cannot be undone.
-                    </Dialog>
-                ) : null}
+                <Dialog
+                    open={open}
+                    title="Remove North"
+                    confirmLabel="Remove"
+                    onCancel={() => setOpen(false)}
+                    onConfirm={() => {
+                        setResult("North was removed.");
+                        setOpen(false);
+                    }}
+                >
+                    Removing the product deletes its projects. This cannot be undone.
+                </Dialog>
             </div>
         );
     },
