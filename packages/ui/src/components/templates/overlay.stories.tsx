@@ -2,7 +2,7 @@ import type { ReactNode } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import { compositionNote, copyableDocs, drawerCompositionSnippet } from "../../../.storybook/copyable-snippets";
 import { cx } from "../../utils/cx";
-import { DocList, DocPage, DocSection } from "./doc";
+import { DocCodeExample, DocList, DocPage, DocSection } from "./doc";
 
 function Bone({ className }: { className: string }) {
     return <span className={cx("block rounded-sm bg-line", className)} />;
@@ -131,6 +131,12 @@ export const Drawer: Story = {
     },
     render: () => (
         <DocPage title="Drawer" intro="A drawer is a full-height panel from the edge. The page stays visible, so the person keeps their place.">
+            <DocSection title="Code example">
+                <DocCodeExample
+                    note={`${compositionNote} Overlays here use illustrative layout primitives for documentation, not package exports. For a confirm dialog with real components, see Layout/Overlays → Dialog (\`Dialog\` is exported).`}
+                    code={drawerCompositionSnippet}
+                />
+            </DocSection>
             <DocSection title="Detail from a list">
                 <p className="text-sm text-muted">Open one entry beside the list. Closing the drawer returns to the same scroll position.</p>
                 <Stage>
