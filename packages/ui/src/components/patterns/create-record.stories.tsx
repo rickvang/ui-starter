@@ -1,5 +1,6 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { compositionNote, copyableDocs, createRecordSnippet } from "../../../.storybook/copyable-snippets";
 import { Badge } from "../base/badge";
 import { Button } from "../base/button";
 import { TextField } from "../base/text-field";
@@ -17,6 +18,12 @@ type Story = StoryObj<typeof meta>;
 
 export const CreateRecord: Story = {
     name: "Create a record",
+    parameters: {
+        docs: copyableDocs(
+            createRecordSnippet,
+            `${compositionNote} \`FormGroup\`, \`TextField\`, \`Button\`, and \`Badge\` are exported; wire \`onSubmit\` / server actions in the app.`,
+        ),
+    },
     render: () => {
         const [saved, setSaved] = useState(false);
 

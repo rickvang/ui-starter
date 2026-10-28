@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { compositionNote, copyableDocs, drawerCompositionSnippet } from "../../../.storybook/copyable-snippets";
 import { cx } from "../../utils/cx";
 import { DocList, DocPage, DocSection } from "./doc";
 
@@ -122,6 +123,12 @@ export const Modal: Story = {
 
 export const Drawer: Story = {
     name: "Drawer",
+    parameters: {
+        docs: copyableDocs(
+            drawerCompositionSnippet,
+            `${compositionNote} Overlays here use illustrative layout primitives (\`DrawerPanel\`, \`Stage\`) for documentation, not package exports. For a confirm dialog with real components, see **Layout/Overlays → Dialog** (\`Dialog\` is exported).`,
+        ),
+    },
     render: () => (
         <DocPage title="Drawer" intro="A drawer is a full-height panel from the edge. The page stays visible, so the person keeps their place.">
             <DocSection title="Detail from a list">

@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { copyableDocs, libraryExportNote, projectFormSnippet } from "../../../.storybook/copyable-snippets";
 import { DocDemo, DocList, DocPage, DocSection } from "../templates/doc";
 import { Button } from "./button";
 import { Fieldset } from "./fieldset";
@@ -35,6 +36,12 @@ function ProjectFields() {
 
 export const FormReady: Story = {
     name: "Form, ready",
+    parameters: {
+        docs: copyableDocs(
+            projectFormSnippet,
+            `${libraryExportNote} \`Form\`, \`FormSubmit\`, \`Fieldset\`, \`TextField\`, and \`Button\` are exported. Cancel uses \`type="button"\` so it does not submit.`,
+        ),
+    },
     render: () => (
         <DocPage title="Form, ready" intro="The form owns the record. Save submits it. Cancel does not.">
             <DocSection title="Common practice">
