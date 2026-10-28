@@ -20,7 +20,7 @@ export const ThisCatalog: Story = {
                 <DocRows
                     headers={["Open", "For"]}
                     rows={[
-                        { label: "Foundations", detail: "Color, type, space, radius, shadow, and motion." },
+                        { label: "Foundations", detail: "Color, type, space, radius, shadow, and motion. Motion is primitives, then semantic roles. The component plays the role." },
                         { label: "Layout", detail: "Frames, overlays, rules, and arrangement." },
                         { label: "Components", detail: "One control. Navigation sits here." },
                         { label: "Modules", detail: "Shell, settings, account, forms, detail, and table." },
@@ -65,7 +65,7 @@ export const ThisStarter: Story = {
                     headers={["Job", "Change"]}
                     rows={[
                         { label: "A control that does not exist", detail: "Add it in packages/ui/src/components, export it from packages/ui/src/index.ts, and put a story beside the file." },
-                        { label: "Color, type, or space", detail: "Semantic tokens in packages/ui/src/styles/theme.css. Primitive ramps stay fixed." },
+                        { label: "Color, type, space, or motion", detail: "Semantic tokens in packages/ui/src/styles/theme.css. Primitive ramps stay fixed. A component owns its motion." },
                         { label: "Show the mock in the app", detail: "apps/web/src/App.tsx. It stays the home page. This app has no router." },
                         { label: "A workspace, client, or project", detail: "One entry in apps/web/src/areas.ts. Register its page in area-pages.tsx only when asked. The URL is /kind/id." },
                     ]}

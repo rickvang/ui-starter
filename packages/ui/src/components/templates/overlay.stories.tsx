@@ -1,14 +1,8 @@
 import type { ReactNode } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
-import { copyableDocs } from "../../../.storybook/copyable-snippets";
-import {
-    compositionNote,
-    drawerCompositionSnippet,
-    modalCompositionSnippet,
-    slideInCompositionSnippet,
-} from "../../../.storybook/story-snippets";
+import { compositionNote, drawerSnippet, libraryExportNote, modalCompositionSnippet, slideInCompositionSnippet } from "../../../.storybook/story-snippets";
 import { cx } from "../../utils/cx";
-import { DocCodeExample, DocCodeSection, DocList, DocPage, DocSection } from "./doc";
+import { DocCodeSection, DocList, DocPage, DocSection } from "./doc";
 
 function Bone({ className }: { className: string }) {
     return <span className={cx("block rounded-sm bg-line", className)} />;
@@ -128,22 +122,10 @@ export const Modal: Story = {
     ),
 };
 
-export const Drawer: Story = {
-    name: "Drawer",
-    parameters: {
-        docs: copyableDocs(
-            drawerCompositionSnippet,
-            `${compositionNote} Overlays here use illustrative layout primitives (\`DrawerPanel\`, \`Stage\`) for documentation, not package exports. For a confirm dialog with real components, see **Layout/Overlays → Dialog** (\`Dialog\` is exported).`,
-        ),
-    },
+export const DrawerWhen: Story = {
+    name: "Drawer, when",
     render: () => (
-        <DocPage title="Drawer" intro="A drawer is a full-height panel from the edge. The page stays visible, so the person keeps their place.">
-            <DocSection title="Code example">
-                <DocCodeExample
-                    note={`${compositionNote} Overlays here use illustrative layout primitives for documentation, not package exports. For a confirm dialog with real components, see Layout/Overlays → Dialog (\`Dialog\` is exported).`}
-                    code={drawerCompositionSnippet}
-                />
-            </DocSection>
+        <DocPage title="Drawer, when" intro="A drawer is a full-height panel from the edge. The page stays visible, so the person keeps their place. The moving panel is the Drawer component.">
             <DocSection title="Detail from a list">
                 <p className="text-sm text-muted">Open one entry beside the list. Closing the drawer returns to the same scroll position.</p>
                 <Stage>
@@ -192,6 +174,7 @@ export const Drawer: Story = {
                     ]}
                 />
             </DocSection>
+            <DocCodeSection note={libraryExportNote} code={drawerSnippet} />
         </DocPage>
     ),
 };
