@@ -44,6 +44,7 @@ export const Overview: Story = {
                         { title: "First run", body: "Use onboarding to name the workspace and offer one invite." },
                         { title: "A queue", body: "Use task management to see status, open one item, and return." },
                         { title: "A set of numbers", body: "Use the visualization page. It stays its own page until there is a chart module." },
+                        { title: "A path and the work it implies", body: "Use planning. A journey names friction. A story map slices the first release." },
                     ]}
                 />
             </DocSection>
