@@ -1,10 +1,11 @@
 import { useState } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { compositionNote, copyableDocs, createRecordSnippet } from "../../../.storybook/copyable-snippets";
 import { Badge } from "../base/badge";
 import { Button } from "../base/button";
 import { TextField } from "../base/text-field";
 import { FormGroup } from "../modules/form-group";
-import { DocDemo, DocList, DocPage, DocSection } from "../templates/doc";
+import { DocCodeExample, DocDemo, DocList, DocPage, DocSection } from "../templates/doc";
 
 const meta = {
     title: "Patterns/Create a record",
@@ -17,11 +18,23 @@ type Story = StoryObj<typeof meta>;
 
 export const CreateRecord: Story = {
     name: "Create a record",
+    parameters: {
+        docs: copyableDocs(
+            createRecordSnippet,
+            `${compositionNote} \`FormGroup\`, \`TextField\`, \`Button\`, and \`Badge\` are exported; wire \`onSubmit\` / server actions in the app.`,
+        ),
+    },
     render: () => {
         const [saved, setSaved] = useState(false);
 
         return (
             <DocPage title="Create a record" intro="Creating a record fills one form, then reports the result. The person does not hunt for the action.">
+                <DocSection title="Code example">
+                    <DocCodeExample
+                        note={`${compositionNote} \`FormGroup\`, \`TextField\`, \`Button\`, and \`Badge\` are exported; wire \`onSubmit\` / server actions in the app.`}
+                        code={createRecordSnippet}
+                    />
+                </DocSection>
                 <DocSection title="When to use">
                     <DocList
                         items={[

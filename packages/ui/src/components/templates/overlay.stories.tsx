@@ -1,7 +1,14 @@
 import type { ReactNode } from "react";
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { copyableDocs } from "../../../.storybook/copyable-snippets";
+import {
+    compositionNote,
+    drawerCompositionSnippet,
+    modalCompositionSnippet,
+    slideInCompositionSnippet,
+} from "../../../.storybook/story-snippets";
 import { cx } from "../../utils/cx";
-import { DocList, DocPage, DocSection } from "./doc";
+import { DocCodeExample, DocCodeSection, DocList, DocPage, DocSection } from "./doc";
 
 function Bone({ className }: { className: string }) {
     return <span className={cx("block rounded-sm bg-line", className)} />;
@@ -82,6 +89,7 @@ export const Modal: Story = {
     name: "Modal",
     render: () => (
         <DocPage title="Modal" intro="A modal stops the page. Use it for a short decision the person must answer before they continue.">
+            <DocCodeSection note={compositionNote} code={modalCompositionSnippet} />
             <DocSection title="Confirm a destructive action">
                 <p className="text-sm text-muted">Name the object and the consequence. Cancel is the safe choice. The confirming action uses a direct verb.</p>
                 <Stage>
@@ -122,8 +130,20 @@ export const Modal: Story = {
 
 export const Drawer: Story = {
     name: "Drawer",
+    parameters: {
+        docs: copyableDocs(
+            drawerCompositionSnippet,
+            `${compositionNote} Overlays here use illustrative layout primitives (\`DrawerPanel\`, \`Stage\`) for documentation, not package exports. For a confirm dialog with real components, see **Layout/Overlays → Dialog** (\`Dialog\` is exported).`,
+        ),
+    },
     render: () => (
         <DocPage title="Drawer" intro="A drawer is a full-height panel from the edge. The page stays visible, so the person keeps their place.">
+            <DocSection title="Code example">
+                <DocCodeExample
+                    note={`${compositionNote} Overlays here use illustrative layout primitives for documentation, not package exports. For a confirm dialog with real components, see Layout/Overlays → Dialog (\`Dialog\` is exported).`}
+                    code={drawerCompositionSnippet}
+                />
+            </DocSection>
             <DocSection title="Detail from a list">
                 <p className="text-sm text-muted">Open one entry beside the list. Closing the drawer returns to the same scroll position.</p>
                 <Stage>
@@ -180,6 +200,7 @@ export const SlideIn: Story = {
     name: "Slide-in",
     render: () => (
         <DocPage title="Slide-in" intro="A slide-in is a small panel from the edge. It does not take the full height. Use it for a quick task on the current page.">
+            <DocCodeSection note={compositionNote} code={slideInCompositionSnippet} />
             <DocSection title="Invite without leaving the list">
                 <p className="text-sm text-muted">The list stays in place. The panel is only as tall as the form. Dismissing it does not change the page.</p>
                 <Stage>
