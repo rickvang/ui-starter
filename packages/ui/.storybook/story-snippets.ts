@@ -74,9 +74,19 @@ export const fieldsetSnippet = librarySnippet(
 
 export const loaderSnippet = librarySnippet('Loader', '<Loader label="Loading members" />', "MembersLoader");
 
+export const emptyStateSnippet = librarySnippet(
+    "EmptyState, Button",
+    `<EmptyState title="No members yet" action={<Button>Invite</Button>}>
+    Invite someone to get started.
+</EmptyState>`,
+    "EmptyMembers",
+);
+
 export const messageSnippet = librarySnippet(
     "Message",
-    '<Message tone="info">North saved your changes.</Message>',
+    `<Message tone="success" title="Product saved">
+    The name and description are kept.
+</Message>`,
     "SaveMessage",
 );
 
@@ -549,14 +559,6 @@ export const switchingOrganizationsSnippet = shellSnippet;
 export const productSettingsSnippet = settingsScreenSnippet;
 
 export const accountInformationSnippet = accountScreenSnippet;
-
-export const globalRulesMessageSnippet = messageSnippet;
-
-export const globalRulesEmptySnippet = librarySnippet(
-    "Message",
-    '<Message tone="neutral">No members yet. Invite someone to get started.</Message>',
-    "EmptyMembersMessage",
-);
 
 export const templatesOverviewSnippet = `${catalogSetupSnippet}
 import { Button, TextField } from "@ui-starter/ui";
