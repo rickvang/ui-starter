@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
+import { formPendingSnippet, formSummarySnippet } from "../../../.storybook/story-snippets";
 import { copyableDocs, libraryExportNote, projectFormSnippet } from "../../../.storybook/copyable-snippets";
-import { DocCodeExample, DocDemo, DocList, DocPage, DocSection } from "../templates/doc";
+import { DocCodeExample, DocDemo, DocList, DocCodeSection, DocPage, DocSection } from "../templates/doc";
 import { Button } from "./button";
 import { Fieldset } from "./fieldset";
 import { Form, FormSubmit } from "./form";
@@ -74,6 +75,7 @@ export const FormSummary: Story = {
     name: "Form, summary",
     render: () => (
         <DocPage title="Form, summary" intro="When more than one field fails, the summary sits at the top of the form. Each field keeps its own error.">
+            <DocCodeSection note={libraryExportNote} code={formSummarySnippet} />
             <DocSection title="Common practice">
                 <DocList
                     items={[
@@ -106,6 +108,7 @@ export const FormPending: Story = {
     name: "Form, pending",
     render: () => (
         <DocPage title="Form, pending" intro="While the save is in progress, Save is unavailable and the form is marked busy.">
+            <DocCodeSection note={libraryExportNote} code={formPendingSnippet} />
             <DocSection title="Common practice">
                 <DocList
                     items={[

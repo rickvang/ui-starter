@@ -106,3 +106,70 @@ export function copyableDocs(source: string, storyNote: string) {
         source: { type: "code" as const, language: "tsx", code: source },
     };
 }
+
+export function librarySnippet(imports: string, jsxBody: string, exportName = "Example"): string {
+    const bodyIndented = jsxBody
+        .split("\n")
+        .map((line) => (line.length > 0 ? `    ${line}` : line))
+        .join("\n");
+
+    return `${catalogSetupSnippet}
+import { ${imports} } from "@ui-starter/ui";
+
+export function ${exportName}() {
+  return (
+${bodyIndented}
+  );
+}`;
+}
+
+export const autodocsTags = ["autodocs"] as const;
+
+export const autodocsComponentParameters = {
+    docs: {
+        description: {
+            component: `${libraryExportNote} Import \`theme.css\` once in the app or Storybook preview.`,
+        },
+    },
+};
+
+export function storyDocs(imports: string, jsxBody: string, exportName = "Example") {
+    return {
+        parameters: {
+            docs: copyableDocs(librarySnippet(imports, jsxBody, exportName), libraryExportNote),
+        },
+    };
+}
+
+export function patternSnippet(imports: string, jsxBody: string, exportName: string): string {
+    const bodyIndented = jsxBody
+        .split("\n")
+        .map((line) => (line.length > 0 ? `    ${line}` : line))
+        .join("\n");
+
+    return `${catalogSetupSnippet}
+import { ${imports} } from "@ui-starter/ui";
+
+// Pattern composition — adapt fields, copy, and data wiring for your product.
+export function ${exportName}() {
+  return (
+${bodyIndented}
+  );
+}`;
+}
+
+export function moduleSnippet(imports: string, jsxBody: string, exportName: string): string {
+    const bodyIndented = jsxBody
+        .split("\n")
+        .map((line) => (line.length > 0 ? `    ${line}` : line))
+        .join("\n");
+
+    return `${catalogSetupSnippet}
+import { ${imports} } from "@ui-starter/ui";
+
+export function ${exportName}() {
+  return (
+${bodyIndented}
+  );
+}`;
+}

@@ -174,3 +174,11 @@ export function DocCodeExample({ note, code }: { note: string; code: string }) {
         </div>
     );
 }
+
+export function DocCodeSection({ note, code }: { note: string; code: string }) {
+    return (
+        <DocSection title="Code example">
+            <DocCodeExample note={note} code={code} />
+        </DocSection>
+    );
+}
